@@ -1,0 +1,40 @@
+Stock:
+    type: entity
+    table: stock
+    indexes:
+        fk_stock_product_idx:
+            columns:
+                - product_idproduct
+    id:
+        idstock:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+    fields:
+        quantity:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        entrydate:
+            type: date
+            nullable: true
+        minalert:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    oneToOne:
+        productproduct:
+            targetEntity: Product
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                product_idproduct:
+                    referencedColumnName: idproduct
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

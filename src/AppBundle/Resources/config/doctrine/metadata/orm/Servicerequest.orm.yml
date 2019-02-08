@@ -1,0 +1,42 @@
+Servicerequest:
+    type: entity
+    table: servicerequest
+    indexes:
+        fk_servicerequest_client1_idx:
+            columns:
+                - client_idclient
+    id:
+        idservicerequest:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+    fields:
+        servicename:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        servicedate:
+            type: date
+            nullable: true
+        description:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+    oneToOne:
+        clientclient:
+            targetEntity: Client
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                client_idclient:
+                    referencedColumnName: idclient
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,37 @@
+Service:
+    type: entity
+    table: service
+    id:
+        idservice:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        servicetype:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        description:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        serviceimage:
+            type: blob
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        servicename:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,51 @@
+Panier:
+    type: entity
+    table: panier
+    indexes:
+        fk_panier_client1_idx:
+            columns:
+                - client_idclient
+    id:
+        idpanier:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+    fields:
+        paniercol:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        totalprice:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        tva:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        pricetopay:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        deliverydate:
+            type: date
+            nullable: true
+    oneToOne:
+        clientclient:
+            targetEntity: Client
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                client_idclient:
+                    referencedColumnName: idclient
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

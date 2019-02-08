@@ -1,0 +1,49 @@
+Productreview:
+    type: entity
+    table: productreview
+    indexes:
+        fk_review_client1_idx:
+            columns:
+                - client_idclient
+        fk_review_admin1_idx:
+            columns:
+                - admin_idadmin
+    id:
+        idreview:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+    fields:
+        description:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        reviewdate:
+            type: datetime
+            nullable: true
+    oneToOne:
+        adminadmin:
+            targetEntity: Admin
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                admin_idadmin:
+                    referencedColumnName: idadmin
+            orphanRemoval: false
+        clientclient:
+            targetEntity: Client
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                client_idclient:
+                    referencedColumnName: idclient
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

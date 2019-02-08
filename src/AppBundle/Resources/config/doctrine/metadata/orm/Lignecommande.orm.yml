@@ -1,0 +1,55 @@
+Lignecommande:
+    type: entity
+    table: lignecommande
+    indexes:
+        fk_lignecommande_panier1_idx:
+            columns:
+                - panier_idpanier
+        fk_lignecommande_product1_idx:
+            columns:
+                - product_idproduct
+    id:
+        idcommande:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+    fields:
+        quantity:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        totalunitprice:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        unitprice:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+    oneToOne:
+        panierpanier:
+            targetEntity: Panier
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                panier_idpanier:
+                    referencedColumnName: idpanier
+            orphanRemoval: false
+        productproduct:
+            targetEntity: Product
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                product_idproduct:
+                    referencedColumnName: idproduct
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,69 @@
+Staff:
+    type: entity
+    table: staff
+    uniqueConstraints:
+        type_UNIQUE:
+            columns:
+                - type
+    id:
+        idstaff:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        lastname:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        type:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        tel:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        address:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        salary:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+        cin:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        poste:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }
