@@ -1,0 +1,4 @@
+services:
+#    heaven.example:
+#        class: HeavenBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

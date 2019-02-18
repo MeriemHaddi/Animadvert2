@@ -107,7 +107,37 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        elseif (0 === strpos($pathinfo, '/login')) {
+        // back_homepage
+        if ('/admin' === $trimmedPathinfo) {
+            $ret = array (  '_controller' => 'BackBundle\\Controller\\DefaultController::indexAction',  '_route' => 'back_homepage',);
+            if ('/' === substr($pathinfo, -1)) {
+                // no-op
+            } elseif ('GET' !== $canonicalMethod) {
+                goto not_back_homepage;
+            } else {
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'back_homepage'));
+            }
+
+            return $ret;
+        }
+        not_back_homepage:
+
+        // heaven_homepage
+        if ('' === $trimmedPathinfo) {
+            $ret = array (  '_controller' => 'HeavenBundle\\Controller\\DefaultController::indexAction',  '_route' => 'heaven_homepage',);
+            if ('/' === substr($pathinfo, -1)) {
+                // no-op
+            } elseif ('GET' !== $canonicalMethod) {
+                goto not_heaven_homepage;
+            } else {
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'heaven_homepage'));
+            }
+
+            return $ret;
+        }
+        not_heaven_homepage:
+
+        if (0 === strpos($pathinfo, '/login')) {
             // fos_user_security_login
             if ('/login' === $pathinfo) {
                 $ret = array (  '_controller' => 'fos_user.security.controller:loginAction',  '_route' => 'fos_user_security_login',);

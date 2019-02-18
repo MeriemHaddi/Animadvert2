@@ -1,0 +1,3 @@
+heaven_homepage:
+    path:     /
+    defaults: { _controller: HeavenBundle:Default:index }
